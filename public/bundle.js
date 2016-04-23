@@ -46,6 +46,10 @@
 
 	'use strict';
 	
+	var _react = __webpack_require__(161);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactDom = __webpack_require__(1);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -54,11 +58,21 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
+	var _index = __webpack_require__(168);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// copy index.html to public folder
 	var index = __webpack_require__(182); // eslint-disable-line no-unused-vars
 	
-	_reactDom2.default.render(_App2.default, document.getElementById('root'));
+	var render = function render() {
+		_reactDom2.default.render(_react2.default.createElement(_App2.default, { state: _index2.default.getState() }), document.getElementById('root'));
+	};
+	
+	_index2.default.subscribe(render);
+	render();
 
 /***/ },
 /* 1 */
@@ -19406,26 +19420,27 @@
 	
 	var _Username2 = _interopRequireDefault(_Username);
 	
-	var _index = __webpack_require__(168);
+	var _SetUsername = __webpack_require__(183);
 	
-	var _index2 = _interopRequireDefault(_index);
+	var _SetUsername2 = _interopRequireDefault(_SetUsername);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var App = function App(_ref) {
-		var store = _ref.store;
+		var state = _ref.state;
 		return _react2.default.createElement(
 			'div',
 			null,
-			_react2.default.createElement(_Username2.default, { value: store.username })
+			_react2.default.createElement(_SetUsername2.default, null),
+			_react2.default.createElement(_Username2.default, { value: state.username })
 		);
 	};
 	
 	App.propTypes = {
-		store: _react2.default.PropTypes.object.isRequired
+		state: _react2.default.PropTypes.object.isRequired
 	};
 	
-	exports.default = _react2.default.createElement(App, { store: _index2.default.getState() });
+	exports.default = App;
 
 /***/ },
 /* 161 */
@@ -20137,41 +20152,46 @@
 	
 	var _redux = __webpack_require__(169);
 	
-	// const todo = (state, action) => {
-	// 	switch (action.type) {
-	// 	case 'ADD_TODO':
-	// 		return {
-	// 			id: action.id,
-	// 			text: action.text,
-	// 			completed: false
-	// 		};
-	// 	case 'TOGGLE_TODO':
-	// 		if (state.id !== action.id) {
-	// 			return state;
-	// 		}
-	//
-	// 		return {
-	// 			...state,
-	// 			completed: !state.completed
-	// 		};
-	// 	default:
-	// 		return state;
-	// 	}
-	// };
-	
 	var username = function username() {
-		// switch (action.type) {
-		// case 'UPDATE_USERNAME':
-		// 	return action.username;
-		// default:
-		// 	return state;
-		// }
-		return {
-			username: 'Knorcedger'
-		};
+		var state = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case 'SET_USERNAME':
+				return action.text;
+			default:
+				return state;
+		}
 	};
 	
-	exports.default = (0, _redux.createStore)(username);
+	var score = function score() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? { player: 0, computer: 0 } : arguments[0];
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case 'COMPUTER_WIN':
+				return Object.assign({}, state, {
+					score: {
+						computer: state.score.computer++
+					}
+				});
+			case 'PLAYER_WIN':
+				return Object.assign({}, state, {
+					score: {
+						player: state.score.player++
+					}
+				});
+			default:
+				return state;
+		}
+	};
+	
+	var game = (0, _redux.combineReducers)({
+		username: username,
+		score: score
+	});
+	
+	exports.default = (0, _redux.createStore)(game);
 
 /***/ },
 /* 169 */
@@ -21045,6 +21065,67 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "./public/index.html";
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(161);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(168);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SetUsername = function SetUsername() {
+		var input = void 0;
+		return _react2.default.createElement(
+			'div',
+			null,
+			_react2.default.createElement(
+				'h2',
+				null,
+				'Hello Stranger'
+			),
+			_react2.default.createElement(
+				'form',
+				{ onSubmit: function onSubmit(e) {
+						console.log('yyyyyyyyyyyy');
+						e.preventDefault();
+						// if (!input.value.trim()) {
+						// 	return;
+						// }
+						// input.value = '';
+					} },
+				_react2.default.createElement('input', null),
+				_react2.default.createElement(
+					'button',
+					{ type: 'submit', onClick: function onClick() {
+							_index2.default.dispatch({
+								type: 'SET_USERNAME',
+								text: 'me'
+							});
+						} },
+					'Set Username'
+				)
+			)
+		);
+	};
+	
+	// SetUsername.propTypes = {
+	// 	store: React.PropTypes.object.isRequired
+	// };
+	
+	exports.default = SetUsername;
 
 /***/ }
 /******/ ]);

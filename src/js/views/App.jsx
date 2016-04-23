@@ -1,17 +1,18 @@
 import React from 'react';
 import Username from './Username.jsx';
-import store from '../stores/index.js';
+import SetUsername from './SetUsername.jsx';
 
-const App = ({store}) => (
+const App = ({state}) => (
 	<div>
-		<Username value={store.username} />
+		<SetUsername />
+		<Username value={state.username} />
 	</div>
 );
 
 App.propTypes = {
-	store: React.PropTypes.object.isRequired
+	state: React.PropTypes.object.isRequired
 };
 
 export default(
-	<App store={store.getState()}/>
+	App
 );
