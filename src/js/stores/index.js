@@ -1,37 +1,36 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
-// const todo = (state, action) => {
-// 	switch (action.type) {
-// 	case 'ADD_TODO':
-// 		return {
-// 			id: action.id,
-// 			text: action.text,
-// 			completed: false
-// 		};
-// 	case 'TOGGLE_TODO':
-// 		if (state.id !== action.id) {
-// 			return state;
-// 		}
-//
-// 		return {
-// 			...state,
-// 			completed: !state.completed
-// 		};
-// 	default:
-// 		return state;
-// 	}
-// };
-
-const username = () => {
-	// switch (action.type) {
-	// case 'UPDATE_USERNAME':
-	// 	return action.username;
-	// default:
-	// 	return state;
-	// }
-	return {
-		username: 'Knorcedger'
-	};
+const username = (state = '', action) => {
+	switch (action.type) {
+	case 'SET_USERNAME':
+		return action.text;
+	default:
+		return state;
+	}
 };
 
-export default createStore(username);
+const score = (state = {player: 0, computer: 0}, action) => {
+	switch (action.type) {
+	case 'COMPUTER_WIN':
+		return Object.assign({}, state, {
+			score: {
+				computer: state.score.computer++
+			}
+		});
+	case 'PLAYER_WIN':
+		return Object.assign({}, state, {
+			score: {
+				player: state.score.player++
+			}
+		});
+	default:
+		return state;
+	}
+};
+
+const game = combineReducers({
+	username,
+	score
+});
+
+export default createStore(game);
