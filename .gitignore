@@ -1,0 +1,9 @@
+# OS trash files
+.DS_Store
+thumbs.db
+
+# Node modules and logs
+node_modules/
+npm-debug.log
+
+temp/
