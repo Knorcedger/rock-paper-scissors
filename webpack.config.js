@@ -16,6 +16,12 @@ module.exports = {
 			query: {
 				name: publicRoot + 'index.html'
 			}
+		}, {
+			test: /\.css/,
+			loader: 'file-loader',
+			query: {
+				name: publicRoot + 'main.css'
+			}
 		}]
 	},
 	resolve: {

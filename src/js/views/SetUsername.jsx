@@ -1,24 +1,25 @@
 import React from 'react';
 import store from '../stores/index.js';
 
-const SetUsername = () => {
+const SetUsername = ({classes}) => {
 	let input;
 	return (
-		<div>
+		<div className={classes}>
 			<h2>Hello Stranger</h2>
 			<form onSubmit={e => {
-				console.log('yyyyyyyyyyyy');
 				e.preventDefault();
-				// if (!input.value.trim()) {
-				// 	return;
-				// }
-				// input.value = '';
+				if (!input.value.trim()) {
+					return;
+				}
+				input.value = '';
 			}}>
-				<input />
+				<input ref={node => {
+					input = node;
+				}} />
 				<button type="submit" onClick={() => {
 					store.dispatch({
 						type: 'SET_USERNAME',
-						text: 'me'
+						text: input.value
 					});
 				}}>Set Username</button>
 			</form>
@@ -26,9 +27,9 @@ const SetUsername = () => {
 	)
 };
 
-// SetUsername.propTypes = {
-// 	store: React.PropTypes.object.isRequired
-// };
+SetUsername.propTypes = {
+	classes: React.PropTypes.string.isRequired
+};
 
 export default(
 	SetUsername

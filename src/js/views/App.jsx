@@ -4,7 +4,7 @@ import SetUsername from './SetUsername.jsx';
 
 const App = ({state}) => (
 	<div>
-		<SetUsername />
+		<SetUsername classes={state.username ? 'hide' : ''} />
 		<Username value={state.username} />
 	</div>
 );
