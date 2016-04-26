@@ -4,7 +4,7 @@ import store from '../stores/index.js';
 const SetUsername = ({classes}) => {
 	let input;
 	return (
-		<div className={classes}>
+		<section className={classes}>
 			<h2>Hello Stranger</h2>
 			<form onSubmit={e => {
 				e.preventDefault();
@@ -23,7 +23,7 @@ const SetUsername = ({classes}) => {
 					});
 				}}>Set Username</button>
 			</form>
-		</div>
+		</section>
 	)
 };
 
