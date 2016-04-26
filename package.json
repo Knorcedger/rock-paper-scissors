@@ -34,7 +34,7 @@
     "url": "https://github.com/Knorcedger/rock-paper-scissors"
   },
   "scripts": {
-    "postinstall": "webpack -p",
+    "postinstall": "NODE_ENV=production webpack -p",
     "server": "node server.js",
     "start": "webpack --watch | node server.js | browser-sync start --proxy 'localhost:3000' --files 'public'",
     "test": "echo \"Error: no test specified\" && exit 1",
