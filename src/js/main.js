@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 import App from './views/App.jsx';
 import store from './stores/index.js';
 
-
 const render = () => {
 	ReactDOM.render(
 		<App state={store.getState()} />,

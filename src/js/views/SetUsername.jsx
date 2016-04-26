@@ -1,7 +1,9 @@
 import React from 'react';
-import store from '../stores/index.js';
 
-const SetUsername = ({classes}) => {
+const SetUsername = ({
+	classes,
+	onSet
+}) => {
 	let input;
 	return (
 		<section className={classes}>
@@ -16,18 +18,14 @@ const SetUsername = ({classes}) => {
 				<input ref={node => {
 					input = node;
 				}} />
-				<button type="submit" onClick={() => {
-					store.dispatch({
-						type: 'SET_USERNAME',
-						text: input.value
-					});
-				}}>Set Username</button>
+			<button type="submit" onClick={() => onSet(input.value)}>Set Username</button>
 			</form>
 		</section>
 	)
 };
 
 SetUsername.propTypes = {
+	onSet: React.PropTypes.func.isRequired,
 	classes: React.PropTypes.string.isRequired
 };
 

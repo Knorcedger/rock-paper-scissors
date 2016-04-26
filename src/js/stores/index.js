@@ -28,9 +28,21 @@ const score = (state = {player: 0, computer: 0}, action) => {
 	}
 };
 
+const turn = (state = 'player', action) => {
+	switch (action.type) {
+	case 'PLAYER_TURN':
+		return 'player';
+	case 'COMPUTER_TURN':
+		return 'computer';
+	default:
+		return state;
+	}
+};
+
 const game = combineReducers({
 	username,
-	score
+	score,
+	turn
 });
 
 export default createStore(game);
