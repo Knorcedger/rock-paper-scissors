@@ -1,19 +1,21 @@
 import React from 'react';
 
-setTimeout(() => {
-	console.log('computer plays');
-}, 3000);
-
 const ComputerBoard = ({
 	onSelect,
 	turn
-}) => (
-	<section id="player-board" className={turn === 'player' ? 'active' : ''}>
-		<button type="button" onClick={() => onSelect('rock')}>Rock</button>
-		<button type="button" onClick={() => onSelect('paper')}>Paper</button>
-		<button type="button" onClick={() => onSelect('scissors')}>Scissors</button>
-	</section>
-);
+}) => {
+	const weapons = ['rock', 'paper', 'scissors'];
+	if (turn === 'computer') {
+		let random = Math.floor(Math.random() * (2 - 0 + 1) + 0);
+		onSelect(weapons[random]);
+	}
+	return (
+		<section id="computer-board" className={turn === 'computer' ? 'active' : ''}>
+			<section	className={turn === 'computer' ? 'hide' : ''}>Preparing...</section>
+			<section	className={turn === 'computer' ? '' : 'hide'}>Select something ffs</section>
+		</section>
+	)
+};
 
 ComputerBoard.propTypes = {
 	onSelect: React.PropTypes.func.isRequired,

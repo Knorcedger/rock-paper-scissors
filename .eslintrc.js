@@ -1,7 +1,8 @@
 module.exports = {
 	extends: ['google', 'eslint:recommended', 'plugin:react/recommended'],
 	rules: {
-		indent: [2, 'tab']
+		indent: [2, 'tab'],
+		'no-console': [0]
 	},
 	env: {
 		browser: true,

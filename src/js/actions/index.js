@@ -1,17 +1,9 @@
-let nextGameId = 0;
 export const setUsername = (text) => {
 	return {
 		type: 'SET_USERNAME',
 		text
 	}
 };
-
-// export const startGame = () => {
-// 	return {
-// 		type: 'START_GAME',
-// 		id: nextGameId
-// 	}
-// };
 
 export const playerTurn = () => {
 	return {
@@ -34,5 +26,19 @@ export const playerWin = () => {
 export const computerWin = () => {
 	return {
 		type: 'COMPUTER_WIN'
+	}
+};
+
+export const setPlayerWeapon = (text) => {
+	return {
+		type: 'SET_PLAYER_WEAPON',
+		text
+	}
+};
+
+export const setComputerWeapon = (text) => {
+	return {
+		type: 'SET_COMPUTER_WEAPON',
+		text
 	}
 };

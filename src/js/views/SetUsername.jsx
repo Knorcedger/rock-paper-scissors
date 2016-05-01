@@ -18,7 +18,7 @@ const SetUsername = ({
 			}}>
 				<input ref={node => {
 					input = node;
-				}} value={localStorage.getItem('username')} />
+				}} defaultValue={localStorage.getItem('username')} />
 			<button type="submit" onClick={() => onSet(input.value)}>Set Username</button>
 			</form>
 		</section>

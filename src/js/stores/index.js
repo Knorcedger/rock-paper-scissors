@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 
 const username = (state = '', action) => {
 	switch (action.type) {
@@ -14,13 +14,13 @@ const score = (state = {player: 0, computer: 0}, action) => {
 	case 'COMPUTER_WIN':
 		return Object.assign({}, state, {
 			score: {
-				computer: state.score.computer++
+				computer: state.computer++
 			}
 		});
 	case 'PLAYER_WIN':
 		return Object.assign({}, state, {
 			score: {
-				player: state.score.player++
+				player: state.player++
 			}
 		});
 	default:
@@ -39,10 +39,41 @@ const turn = (state = 'player', action) => {
 	}
 };
 
+const weapons = (state = {player: '', computer: ''}, action) => {
+	switch (action.type) {
+	case 'SET_PLAYER_WEAPON':
+		return Object.assign({}, state, {
+			player: action.text
+		});
+	case 'SET_COMPUTER_WEAPON':
+		return Object.assign({}, state, {
+			computer: action.text
+		});
+	default:
+		return state;
+	}
+};
+
 const game = combineReducers({
 	username,
 	score,
-	turn
+	turn,
+	weapons
 });
 
-export default createStore(game);
+function logger() {
+	return (next) => (action) => {
+		console.log('will dispatch', action)
+
+		// Call the next dispatch method in the middleware chain.
+		let returnValue = next(action)
+
+		// console.log('state after dispatch', getState())
+
+		// This will likely be the action itself, unless
+		// a middleware further in chain changed it.
+		return returnValue
+	}
+}
+
+export default createStore(game, {}, applyMiddleware(logger));

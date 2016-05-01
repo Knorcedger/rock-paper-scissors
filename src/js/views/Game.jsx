@@ -3,23 +3,51 @@ import Score from './Score.jsx';
 import PlayerBoard from './PlayerBoard.jsx';
 import ComputerBoard from './ComputerBoard.jsx';
 import store from '../stores/index.js';
-import {computerTurn} from '../actions/index.js';
+import {computerTurn, playerTurn, computerWin, playerWin,
+	setPlayerWeapon, setComputerWeapon} from '../actions/index.js';
 
 const Game = ({
 	score,
 	username,
 	turn,
 	classes
-}) => (
-	<section className={classes}>
-		<PlayerBoard turn={turn} onSelect={() => {
-			console.log('selected');
-			store.dispatch(computerTurn());
-		}} />
-		<Score score={score} username={username} />
-		<ComputerBoard />
-	</section>
-);
+}) => {
+	const checkWinner = (playerWeapon, computerWeapon) => {
+		if (playerWeapon === 'rock' && computerWeapon === 'scissors') {
+			store.dispatch(playerWin());
+		} else if (playerWeapon === 'rock' && computerWeapon === 'paper') {
+			store.dispatch(computerWin());
+		} else if (playerWeapon === 'rock' && computerWeapon === 'rock') {
+			// nothing happens
+		} else if (playerWeapon === 'paper' && computerWeapon === 'scissors') {
+			store.dispatch(computerWin());
+		} else if (playerWeapon === 'paper' && computerWeapon === 'paper') {
+			// nothing happens
+		} else if (playerWeapon === 'paper' && computerWeapon === 'rock') {
+			store.dispatch(playerWin());
+		} else if (playerWeapon === 'scissors' && computerWeapon === 'scissors') {
+			// nothing happens
+		} else if (playerWeapon === 'scissors' && computerWeapon === 'paper') {
+			store.dispatch(playerWin());
+		} else if (playerWeapon === 'scissors' && computerWeapon === 'rock') {
+			store.dispatch(computerWin());
+		}
+	}
+	return (
+		<section className={classes}>
+			<PlayerBoard turn={turn} onSelect={(weapon) => {
+				store.dispatch(setPlayerWeapon(weapon));
+				store.dispatch(computerTurn());
+			}} />
+			<Score score={score} username={username} />
+			<ComputerBoard turn={turn} onSelect={(weapon) => {
+				store.dispatch(playerTurn());
+				store.dispatch(setComputerWeapon(weapon));
+				checkWinner(store.getState().weapons.player, store.getState().weapons.computer);
+			}}  />
+		</section>
+	)
+};
 
 Game.propTypes = {
 	score: React.PropTypes.object.isRequired,
