@@ -1,10 +1,10 @@
 var publicRoot = './public/';
-const webpack = require('webpack');
 
 module.exports = {
 	entry: './src/js/main',
 	output: {
-		filename: publicRoot + 'bundle.js'
+		path: publicRoot,
+		filename: 'bundle.js'
 	},
 	devtool: 'source-map',
 	module: {
@@ -12,16 +12,13 @@ module.exports = {
 			test: /\.jsx?$/,
 			loader: 'babel-loader'
 		}, {
-			test: /\.html/,
-			loader: 'file-loader',
-			query: {
-				name: publicRoot + 'index.html'
-			}
+			test: /\.css$/,
+			loader: 'style-loader!css-loader'
 		}, {
-			test: /\.css/,
+			test: /\.html$/,
 			loader: 'file-loader',
 			query: {
-				name: publicRoot + 'main.css'
+				name: '[name].html'
 			}
 		}]
 	},

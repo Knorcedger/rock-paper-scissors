@@ -1,6 +1,7 @@
 // copy index.html to public folder
-var index = require('../index.html'); // eslint-disable-line no-unused-vars
-var mainCss = require('../css/main.css'); // eslint-disable-line no-unused-vars
+require('../index.html');
+require('../../node_modules/foundation-sites/dist/foundation.css');
+require('../css/main.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
