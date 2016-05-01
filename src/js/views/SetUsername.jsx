@@ -13,11 +13,12 @@ const SetUsername = ({
 				if (!input.value.trim()) {
 					return;
 				}
+				localStorage.setItem('username', input.value);
 				input.value = '';
 			}}>
 				<input ref={node => {
 					input = node;
-				}} />
+				}} value={localStorage.getItem('username')} />
 			<button type="submit" onClick={() => onSet(input.value)}>Set Username</button>
 			</form>
 		</section>
