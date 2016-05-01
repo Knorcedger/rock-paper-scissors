@@ -6,8 +6,8 @@ const SetUsername = ({
 }) => {
 	let input;
 	return (
-		<section className={classes}>
-			<h2>Hello Stranger</h2>
+		<section id="set-username" className={classes}>
+			<h2>Your name human!</h2>
 			<form onSubmit={e => {
 				e.preventDefault();
 				if (!input.value.trim()) {
@@ -18,7 +18,7 @@ const SetUsername = ({
 			}}>
 				<input ref={node => {
 					input = node;
-				}} defaultValue={localStorage.getItem('username')} />
+				}} defaultValue={localStorage.getItem('username')} type="text" />
 			<button className="button success" type="submit" onClick={() => onSet(input.value)}>Set Username</button>
 			</form>
 		</section>

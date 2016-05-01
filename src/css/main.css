@@ -2,14 +2,39 @@ body {
 	background: #655999;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6, {
 	color: #FFFFFF;
 }
 
-.hide {
-	display: none;
+a {
+	color: #a9a1cc;
 }
 
-.hide2 {
-	display: none;
+#bar {
+	background: #4a3f7c;
+	box-shadow: #222 0px 3px 2px;
+	height: 40px;
+}
+
+#bar h1 {
+	font-size: 18px;
+	padding: 10px;
+	color: #FFFFFF;
+}
+
+header h2 {
+	font-size: 20px;
+	padding: 40px 10px 10px 10px;
+	color: #FFFFFF;
+}
+
+#set-username {
+	color: #FFFFFF;
+}
+
+footer {
+	color: #FFFFFF;
+	font-size: 14px;
+	float: right;
+	padding-right: 20px;
 }

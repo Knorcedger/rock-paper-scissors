@@ -1,6 +1,6 @@
 // copy index.html to public folder
 require('../index.html');
-require('../../node_modules/foundation-sites/dist/foundation.css');
+require('../../node_modules/foundation-sites/dist/foundation-flex.css');
 require('../css/main.css');
 
 import React from 'react';
