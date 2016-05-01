@@ -34,13 +34,13 @@ const Game = ({
 		}
 	}
 	return (
-		<section className={classes}>
-			<PlayerBoard turn={turn} onSelect={(weapon) => {
+		<section className={classes + ' row'}>
+			<PlayerBoard className="columns small-12 medium-4" turn={turn} onSelect={(weapon) => {
 				store.dispatch(setPlayerWeapon(weapon));
 				store.dispatch(computerTurn());
 			}} />
-			<Score score={score} username={username} />
-			<ComputerBoard turn={turn} onSelect={(weapon) => {
+			<Score className="columns small-12 medium-4" score={score} username={username} />
+			<ComputerBoard className="columns small-12 medium-4" turn={turn} onSelect={(weapon) => {
 				store.dispatch(playerTurn());
 				store.dispatch(setComputerWeapon(weapon));
 				checkWinner(store.getState().weapons.player, store.getState().weapons.computer);

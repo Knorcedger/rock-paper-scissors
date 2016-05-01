@@ -32,6 +32,15 @@ header h2 {
 	color: #FFFFFF;
 }
 
+table thead {
+	background: #75ABBF;
+	border-color: #75ABBF;
+}
+
+table tbody {
+	text-align: center;
+}
+
 footer {
 	color: #FFFFFF;
 	font-size: 14px;
