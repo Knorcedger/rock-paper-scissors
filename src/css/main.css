@@ -28,6 +28,10 @@ header h2 {
 	color: #FFFFFF;
 }
 
+.sub-header h2 {
+	text-align: center;
+}
+
 #set-username {
 	color: #FFFFFF;
 }

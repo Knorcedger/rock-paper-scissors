@@ -17,6 +17,12 @@ export const computerWin = () => {
 	}
 };
 
+export const draw = () => {
+	return {
+		type: 'DRAW'
+	}
+};
+
 export const setPlayerWeapon = (text) => {
 	return {
 		type: 'SET_PLAYER_WEAPON',

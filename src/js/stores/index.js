@@ -9,19 +9,24 @@ const username = (state = '', action) => {
 	}
 };
 
-const score = (state = {player: 0, computer: 0}, action) => {
+const score = (state = {player: 0, computer: 0, lastWinner: ''}, action) => {
+	let score;
 	switch (action.type) {
 	case 'COMPUTER_WIN':
+		score = state.computer + 1;
 		return Object.assign({}, state, {
-			score: {
-				computer: state.computer++
-			}
+			computer: score,
+			lastWinner: 'computer'
 		});
 	case 'PLAYER_WIN':
+		score = state.player + 1;
 		return Object.assign({}, state, {
-			score: {
-				player: state.player++
-			}
+			player: score,
+			lastWinner: 'player'
+		});
+	case 'DRAW':
+		return Object.assign({}, state, {
+			lastWinner: 'draw'
 		});
 	default:
 		return state;

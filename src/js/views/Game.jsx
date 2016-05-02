@@ -2,8 +2,9 @@ import React from 'react';
 import Score from './Score.jsx';
 import PlayerBoard from './PlayerBoard.jsx';
 import ComputerBoard from './ComputerBoard.jsx';
+import Result from './Result.jsx';
 import store from '../stores/index.js';
-import {computerTurn, playerTurn, computerWin, playerWin,
+import {computerTurn, playerTurn, computerWin, playerWin, draw,
 	setPlayerWeapon, setComputerWeapon, gameEnd} from '../actions/index.js';
 
 const Game = ({
@@ -18,15 +19,15 @@ const Game = ({
 		} else if (playerWeapon === 'rock' && computerWeapon === 'paper') {
 			store.dispatch(computerWin());
 		} else if (playerWeapon === 'rock' && computerWeapon === 'rock') {
-			// nothing happens
+			store.dispatch(draw());
 		} else if (playerWeapon === 'paper' && computerWeapon === 'scissors') {
 			store.dispatch(computerWin());
 		} else if (playerWeapon === 'paper' && computerWeapon === 'paper') {
-			// nothing happens
+			store.dispatch(draw());
 		} else if (playerWeapon === 'paper' && computerWeapon === 'rock') {
 			store.dispatch(playerWin());
 		} else if (playerWeapon === 'scissors' && computerWeapon === 'scissors') {
-			// nothing happens
+			store.dispatch(draw());
 		} else if (playerWeapon === 'scissors' && computerWeapon === 'paper') {
 			store.dispatch(playerWin());
 		} else if (playerWeapon === 'scissors' && computerWeapon === 'rock') {
@@ -44,7 +45,10 @@ const Game = ({
 				store.dispatch(setPlayerWeapon(weapon));
 				store.dispatch(computerTurn());
 			}} />
-			<Score className="columns small-12 medium-4" score={score} username={username} />
+			<section className="columns small-12 medium-4">
+				<Score className="columns small-12 medium-4" score={score} username={username} />
+				<Result score={score} status={status} />
+			</section>
 			<ComputerBoard className="columns small-12 medium-4" status={status} onSelect={(weapon) => {
 				store.dispatch(setComputerWeapon(weapon));
 				checkWinner(store.getState().weapons.player, store.getState().weapons.computer);
