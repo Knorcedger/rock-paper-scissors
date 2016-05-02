@@ -70,7 +70,9 @@ const game = combineReducers({
 
 function logger() {
 	return (next) => (action) => {
-		console.log('will dispatch', action)
+		if (process.env.NODE_ENV !== 'production') {
+			console.log('will dispatch', action);
+		}
 
 		// Call the next dispatch method in the middleware chain.
 		let returnValue = next(action)

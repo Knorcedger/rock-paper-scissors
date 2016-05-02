@@ -5,6 +5,7 @@ require('../css/main.css');
 require('../img/Rock.png');
 require('../img/Paper.png');
 require('../img/Scissors.png');
+require('../img/favicon.ico');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

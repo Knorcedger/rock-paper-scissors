@@ -26,6 +26,12 @@ module.exports = {
 			query: {
 				name: 'img/[name].[ext]'
 			}
+		}, {
+			test: /\.ico$/,
+			loader: 'file-loader',
+			query: {
+				name: '[name].[ext]'
+			}
 		}]
 	},
 	resolve: {
