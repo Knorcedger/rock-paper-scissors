@@ -28,17 +28,6 @@ const score = (state = {player: 0, computer: 0}, action) => {
 	}
 };
 
-const turn = (state = 'player', action) => {
-	switch (action.type) {
-	case 'PLAYER_TURN':
-		return 'player';
-	case 'COMPUTER_TURN':
-		return 'computer';
-	default:
-		return state;
-	}
-};
-
 const weapons = (state = {player: '', computer: ''}, action) => {
 	switch (action.type) {
 	case 'SET_PLAYER_WEAPON':
@@ -54,11 +43,24 @@ const weapons = (state = {player: '', computer: ''}, action) => {
 	}
 };
 
+const status = (state = 'player_turn', action) => {
+	switch (action.type) {
+	case 'PLAYER_TURN':
+		return 'player_turn';
+	case 'COMPUTER_TURN':
+		return 'computer_turn';
+	case 'GAME_END':
+		return 'end';
+	default:
+		return state;
+	}
+};
+
 const game = combineReducers({
 	username,
 	score,
-	turn,
-	weapons
+	weapons,
+	status
 });
 
 function logger() {
