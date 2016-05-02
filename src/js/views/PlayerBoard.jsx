@@ -5,9 +5,9 @@ const PlayerBoard = ({
 	status
 }) => (
 	<section id="player-board" className={status === 'player_turn' ? 'active' : ''}>
-		<button type="button" disabled={status === 'computer_turn'} onClick={() => onSelect('rock')}>Rock</button>
-		<button type="button" disabled={status === 'computer_turn'} onClick={() => onSelect('paper')}>Paper</button>
-		<button type="button" disabled={status === 'computer_turn'} onClick={() => onSelect('scissors')}>Scissors</button>
+		<button type="button" disabled={status === 'end'} onClick={() => onSelect('rock')}><img src="img/Rock.png" /></button>
+		<button type="button" disabled={status === 'end'} onClick={() => onSelect('paper')}><img src="img/Paper.png" /></button>
+		<button type="button" disabled={status === 'end'} onClick={() => onSelect('scissors')}><img src="img/Scissors.png" /></button>
 	</section>
 );
 

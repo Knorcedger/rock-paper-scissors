@@ -20,6 +20,12 @@ module.exports = {
 			query: {
 				name: '[name].html'
 			}
+		}, {
+			test: /\.png$/,
+			loader: 'file-loader',
+			query: {
+				name: 'img/[name].[ext]'
+			}
 		}]
 	},
 	resolve: {

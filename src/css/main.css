@@ -36,6 +36,17 @@ header h2 {
 	color: #FFFFFF;
 }
 
+#player-board button[disabled] {
+	opacity: 0.7;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+#player-board button.selected[disabled] {
+	opacity: 1;
+
+}
+
 table thead {
 	background: #75ABBF;
 	border-color: #75ABBF;

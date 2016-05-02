@@ -1,8 +1,10 @@
 import React from 'react';
+import ComputerTalk from './ComputerTalk.jsx';
 
 const ComputerBoard = ({
 	onSelect,
-	status
+	status,
+	score
 }) => {
 	const weapons = ['rock', 'paper', 'scissors'];
 	if (status === 'computer_turn') {
@@ -11,15 +13,16 @@ const ComputerBoard = ({
 	}
 	return (
 		<section id="computer-board" className={status === 'computer' ? 'active' : ''}>
-			<section	className={status === 'computer' ? 'hide' : ''}>Preparing...</section>
-			<section	className={status === 'computer' ? '' : 'hide'}>Select something ffs</section>
+			<section	className={status === 'end' ? 'hide' : ''}><h4>Computer: Analyzing human bahavior to secure victory!</h4></section>
+			<ComputerTalk status={status} score={score} />
 		</section>
 	)
 };
 
 ComputerBoard.propTypes = {
 	onSelect: React.PropTypes.func.isRequired,
-	status: React.PropTypes.string.isRequired
+	status: React.PropTypes.string.isRequired,
+	score: React.PropTypes.object.isRequired
 };
 
 export default(

@@ -49,7 +49,7 @@ const Game = ({
 				<Score className="columns small-12 medium-4" score={score} username={username} />
 				<Result score={score} status={status} />
 			</section>
-			<ComputerBoard className="columns small-12 medium-4" status={status} onSelect={(weapon) => {
+			<ComputerBoard className="columns small-12 medium-4" status={status} score={score} onSelect={(weapon) => {
 				store.dispatch(setComputerWeapon(weapon));
 				checkWinner(store.getState().weapons.player, store.getState().weapons.computer);
 			}}  />
