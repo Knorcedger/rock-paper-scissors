@@ -1,3 +1,20 @@
+* {
+	font-family: Helvetica;
+	margin: 0;
+	padding: 0;
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+	-webkit-tap-highlight-color: rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+	-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	outline: 0px;
+	/*-webkit-user-modify: read-write-plaintext-only;*/
+}
+
+input[type='text'], input[type='email'], input[type='search'],
+input[type='password'], textarea {
+	-webkit-user-select: text;
+}
+
 body {
 	background: #655999;
 	-webkit-user-select: none;
@@ -10,6 +27,11 @@ h1, h2, h3, h4, h5, h6, {
 
 a {
 	color: #a9a1cc;
+}
+
+img {
+	width: 100%;
+	height: auto;
 }
 
 main {
@@ -40,6 +62,14 @@ header h2 {
 
 #set-username {
 	color: #FFFFFF;
+}
+
+#set-username form {
+	text-align: center;
+}
+
+#player-board {
+	text-align: center;
 }
 
 #player-board button:hover {
@@ -96,5 +126,5 @@ footer {
 	color: #FFFFFF;
 	font-size: 14px;
 	float: right;
-	padding-right: 20px;
+	padding: 10px;
 }

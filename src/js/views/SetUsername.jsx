@@ -8,7 +8,7 @@ const SetUsername = ({
 	return (
 		<section id="set-username" className={classes}>
 			<h2>Your name human!</h2>
-			<form name="form" onSubmit={e => {
+			<form onSubmit={e => {
 				e.preventDefault();
 				if (!input.value.trim()) {
 					return;

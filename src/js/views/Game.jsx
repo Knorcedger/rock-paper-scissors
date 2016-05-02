@@ -41,17 +41,17 @@ const Game = ({
 	}
 	return (
 		<section className={classes + ' row'}>
-			<section className="columns small-12 medium-4">
+			<section className="columns small-order-2 medium-order-1 small-6 medium-4">
 				<PlayerBoard status={status} weapons={store.getState().weapons} onSelect={(weapon) => {
 					store.dispatch(setPlayerWeapon(weapon));
 					store.dispatch(computerTurn());
 				}} />
 			</section>
-			<section className="columns small-12 medium-4">
+			<section className="columns small-order-1 medium-order-2 small-12 medium-4">
 				<Score className="columns small-12 medium-4" score={score} username={username} />
 				<Result score={score} status={status} />
 			</section>
-			<section className="columns small-12 medium-4">
+			<section className="columns small-order-3 medium-order-3 small-6 medium-4">
 				<ComputerBoard status={status} score={score} weapons={store.getState().weapons} onSelect={(weapon) => {
 					store.dispatch(setComputerWeapon(weapon));
 					checkWinner(store.getState().weapons.player, store.getState().weapons.computer);

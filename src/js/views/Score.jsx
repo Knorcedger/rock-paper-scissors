@@ -10,7 +10,7 @@ const Score = ({
 			<thead>
 				<tr>
 					<th>{username}</th>
-					<th>High AI</th>
+					<th>Computer</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -42,7 +42,7 @@ const ComputerTalk = ({
 
 	return (
 		<section>
-			<h4 className={status === 'end' ? 'hide' : ''}><strong>Computer</strong>: Analyzing human bahavior to secure victory!</h4>
+			<h4 className={status === 'end' ? 'hide' : ''}><strong>Computer</strong>: Analyzing human behavior to secure victory!</h4>
 			<h4 className={classes}><strong>Computer</strong>: {getMessage(score.lastWinner)}</h4>
 		</section>
 	)

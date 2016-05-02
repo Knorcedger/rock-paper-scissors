@@ -9,12 +9,12 @@ import classNames from 'classnames';
 const App = ({state}) => {
 	var subHeader1Class = classNames({
 		'columns': true,
-		'small-6': true,
+		'small-8': true,
 		'hide': state.username
 	});
 	var subHeader2Class = classNames({
 		'columns': true,
-		'small-6': true,
+		'small-12': true,
 		'hide': !state.username
 	});
 	return (
