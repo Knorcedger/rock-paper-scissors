@@ -35,14 +35,15 @@ const ComputerTalk = ({
 	// define when to show it
 	var classes;
 	if (status === 'end') {
-		classes = 'result-message';
+		classes = '';
 	} else {
-		classes = 'result-message hide';
+		classes = 'hide';
 	}
 
 	return (
-		<section className={classes}>
-			<h4>Computer: {getMessage(score.lastWinner)}</h4>
+		<section>
+			<h4 className={status === 'end' ? 'hide' : ''}><strong>Computer</strong>: Analyzing human bahavior to secure victory!</h4>
+			<h4 className={classes}><strong>Computer</strong>: {getMessage(score.lastWinner)}</h4>
 		</section>
 	)
 };

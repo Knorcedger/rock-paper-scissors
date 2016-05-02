@@ -13,9 +13,16 @@ const Result = ({
 		classes = 'hide';
 	}
 
+	var message = score.lastWinner.charAt(0).toUpperCase() + score.lastWinner.slice(1);
+	if (score.lastWinner === 'draw') {
+		message += '!';
+	} else {
+		message += ' won!';
+	}
+
 	return (
 		<section id="result-message" className={classes}>
-			<h3>{score.lastWinner.charAt(0).toUpperCase() + score.lastWinner.slice(1) + ' won!'}</h3>
+			<h3>{message}</h3>
 		</section>
 	)
 };

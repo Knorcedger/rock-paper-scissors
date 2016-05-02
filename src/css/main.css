@@ -1,5 +1,7 @@
 body {
 	background: #655999;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
 }
 
 h1, h2, h3, h4, h5, h6, {
@@ -8,6 +10,10 @@ h1, h2, h3, h4, h5, h6, {
 
 a {
 	color: #a9a1cc;
+}
+
+main {
+	margin: 0 auto;
 }
 
 #bar {
@@ -36,6 +42,19 @@ header h2 {
 	color: #FFFFFF;
 }
 
+#player-board button:hover {
+	-webkit-filter: brightness(150%);
+	filter: brightness(150%);
+	transition: 1s;
+}
+
+#player-board button:active {
+	-webkit-filter: brightness(70%);
+	filter: brightness(70%);
+	transition: 0.5s;
+	outline: none;
+}
+
 #player-board button[disabled] {
 	opacity: 0.7;
 	-webkit-filter: grayscale(100%);
@@ -44,12 +63,29 @@ header h2 {
 
 #player-board button.selected[disabled] {
 	opacity: 1;
+}
 
+#result-message h3 {
+	text-align: center;
+	color: #FFFFFF;
+}
+
+#scores h3 {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+#computer-board h4 {
+	color: #77D6E5;
 }
 
 table thead {
 	background: #75ABBF;
 	border-color: #75ABBF;
+}
+
+table thead th {
+	text-align: center;
 }
 
 table tbody {

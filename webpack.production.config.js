@@ -4,7 +4,8 @@ const webpack = require('webpack');
 module.exports = {
 	entry: './src/js/main',
 	output: {
-		filename: publicRoot + 'bundle.js'
+		path: publicRoot,
+		filename: 'bundle.js'
 	},
 	devtool: 'source-map',
 	module: {
@@ -12,16 +13,19 @@ module.exports = {
 			test: /\.jsx?$/,
 			loader: 'babel-loader'
 		}, {
-			test: /\.html/,
+			test: /\.css$/,
+			loader: 'style-loader!css-loader'
+		}, {
+			test: /\.html$/,
 			loader: 'file-loader',
 			query: {
-				name: publicRoot + 'index.html'
+				name: '[name].html'
 			}
 		}, {
-			test: /\.css/,
+			test: /\.png$/,
 			loader: 'file-loader',
 			query: {
-				name: publicRoot + 'main.css'
+				name: 'img/[name].[ext]'
 			}
 		}]
 	},

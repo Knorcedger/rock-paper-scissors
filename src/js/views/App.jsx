@@ -26,10 +26,14 @@ const App = ({state}) => {
 					<h2 className={subHeader2Class}>Let's see what you've got!</h2>
 				</section>
 			</header>
-			<main className="row align-center">
-				<SetUsername onSet={(value) => {
-					store.dispatch(setUsername(value));
-				}} classes={state.username ? 'hide' : ''} />
+			<main>
+				<section className="row align-center">
+					<section className="columns small-8 medium-6 large-4">
+						<SetUsername onSet={(value) => {
+							store.dispatch(setUsername(value));
+						}} classes={state.username ? 'hide' : ''} />
+					</section>
+				</section>
 			<Game score={state.score} username={state.username} status={state.status} classes={state.username ? '' : 'hide'} />
 			</main>
 			<footer>

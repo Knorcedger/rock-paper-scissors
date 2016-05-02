@@ -37,22 +37,26 @@ const Game = ({
 		setTimeout(function() {
 			// start game
 			store.dispatch(playerTurn());
-		}, 5000);
+		}, 3000);
 	}
 	return (
 		<section className={classes + ' row'}>
-			<PlayerBoard className="columns small-12 medium-4" status={status} onSelect={(weapon) => {
-				store.dispatch(setPlayerWeapon(weapon));
-				store.dispatch(computerTurn());
-			}} />
+			<section className="columns small-12 medium-4">
+				<PlayerBoard status={status} weapons={store.getState().weapons} onSelect={(weapon) => {
+					store.dispatch(setPlayerWeapon(weapon));
+					store.dispatch(computerTurn());
+				}} />
+			</section>
 			<section className="columns small-12 medium-4">
 				<Score className="columns small-12 medium-4" score={score} username={username} />
 				<Result score={score} status={status} />
 			</section>
-			<ComputerBoard className="columns small-12 medium-4" status={status} score={score} onSelect={(weapon) => {
-				store.dispatch(setComputerWeapon(weapon));
-				checkWinner(store.getState().weapons.player, store.getState().weapons.computer);
-			}}  />
+			<section className="columns small-12 medium-4">
+				<ComputerBoard status={status} score={score} weapons={store.getState().weapons} onSelect={(weapon) => {
+					store.dispatch(setComputerWeapon(weapon));
+					checkWinner(store.getState().weapons.player, store.getState().weapons.computer);
+				}}  />
+			</section>
 		</section>
 	)
 };
