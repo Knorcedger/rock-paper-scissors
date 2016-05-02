@@ -18,7 +18,7 @@ const SetUsername = ({
 			}}>
 				<input ref={node => {
 					input = node;
-				}} defaultValue={localStorage.getItem('username')} type="text" autoFocus name="username" className="username" />
+				}} defaultValue={localStorage.getItem('username')} type="text" autoFocus name="username" className="username" maxLength="12" />
 			<button className="button success" type="submit" onClick={() => onSet(input.value)}>Set Username</button>
 			</form>
 		</section>

@@ -29,11 +29,6 @@ a {
 	color: #a9a1cc;
 }
 
-img {
-	width: 100%;
-	height: auto;
-}
-
 main {
 	margin: 0 auto;
 }
@@ -105,8 +100,16 @@ header h2 {
 	text-align: center;
 }
 
+#computer-board {
+	text-align: center;
+}
+
 #computer-board h4 {
 	color: #77D6E5;
+}
+
+#computer-talk {
+	text-align: center;
 }
 
 table thead {

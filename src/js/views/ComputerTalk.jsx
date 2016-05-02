@@ -6,7 +6,7 @@ const ComputerTalk = ({
 }) => {
 	// show some cool messages
 	const winMessages = [
-		'Pity human.. you can\'t compete againt my awesome AI',
+		'Pity human.. you can\'t compete against my awesomeness',
 		'Another win, maybe just quit?',
 		'Another opponent, another disappointment..'
 	];
@@ -14,6 +14,11 @@ const ComputerTalk = ({
 		'Pure luck',
 		'I need to reprogram this',
 		'You must be cheating :x'
+	];
+	const drawMessages = [
+		'I didn\'t expect you to be that good',
+		'You were lucky this time, but it won\'t last forever',
+		'Hmmm...'
 	];
 	const getMessage = (result) => {
 		let random = Math.floor(Math.random() * (2 - 0 + 1) + 0);
@@ -23,7 +28,7 @@ const ComputerTalk = ({
 		} else if (result === 'player') {
 			message = loseMessages[random];
 		} else if (result === 'draw') {
-			message = 'Hmmm...';
+			message = drawMessages[random];
 		} else {
 			// on start, we have no result yet
 			message = '';
@@ -41,7 +46,7 @@ const ComputerTalk = ({
 	}
 
 	return (
-		<section>
+		<section id="computer-talk">
 			<h4 className={status === 'end' ? 'hide' : ''}><strong>Computer</strong>: Analyzing human behavior to secure victory!</h4>
 			<h4 className={classes}><strong>Computer</strong>: {getMessage(score.lastWinner)}</h4>
 		</section>
