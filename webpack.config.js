@@ -1,9 +1,7 @@
-var publicRoot = './public/';
-
 module.exports = {
 	entry: './src/js/main',
 	output: {
-		path: publicRoot,
+		path: './public/',
 		filename: 'bundle.js'
 	},
 	devtool: 'source-map',
